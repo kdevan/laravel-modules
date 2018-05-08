@@ -25,7 +25,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Kdevan\\Modules\\": "src"
+      "Nwidart\\Modules\\": "src"
     },
     "files": [
       "src/helpers.php"
@@ -33,17 +33,17 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Kdevan\\Modules\\Tests\\": "tests",
+      "Nwidart\\Modules\\Tests\\": "tests",
       "Modules\\Recipe\\": "tests/stubs/valid/Recipe"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Kdevan\\Modules\\LaravelModulesServiceProvider"
+        "Nwidart\\Modules\\LaravelModulesServiceProvider"
       ],
       "aliases": {
-        "Module": "Kdevan\\Modules\\Facades\\Module"
+        "Module": "Nwidart\\Modules\\Facades\\Module"
       }
     }
   },
