@@ -2,6 +2,7 @@
 
 namespace Nwidart\Modules\Commands;
 
+use Illuminate\Support\Str;
 use Nwidart\Modules\Support\Config\GenerateConfigReader;
 use Nwidart\Modules\Support\Stub;
 use Nwidart\Modules\Traits\ModuleCommandTrait;
@@ -47,6 +48,27 @@ class RouteProviderMakeCommand extends GeneratorCommand
     protected function getTemplateContents()
     {
         $module = $this->laravel['modules']->findOrFail($this->getModuleName());
+
+        $web = new Stub('/routes/web.stub', [
+            'STUDLY_NAME'         => $this->getClassNamespace($module),
+            'PLURAL_LOWER_NAME'       => Str::plural(strtolower($this->getClassNamespace($module))),
+        ]);
+
+        $web->render();
+
+        $api = new Stub('/routes/api.stub', [
+            'STUDLY_NAME'         => $this->getClassNamespace($module),
+            'PLURAL_LOWER_NAME'       => Str::plural(strtolower($this->getClassNamespace($module))),
+        ]);
+
+        $api->render();
+
+        $channel = new Stub('/routes/channel.stub', [
+            'STUDLY_NAME'         => $this->getClassNamespace($module),
+            'PLURAL_LOWER_NAME'       => Str::plural(strtolower($this->getClassNamespace($module))),
+        ]);
+
+        $channel->render();
 
         return (new Stub('/route-provider.stub', [
             'STUDLY_NAME'         => $this->getClassNamespace($module),
