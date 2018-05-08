@@ -27,13 +27,15 @@ return [
         'path' => base_path() . '/vendor/kdevan/laravel-modules/src/Commands/stubs',
         'files' => [
             'scaffold/config' => 'Config/config.php',
-            'routes' => 'routes/web.php',
-            'routes' => 'routes/api.php',
-            'routes' => 'routes/channels.php',
+            'routes/web' => 'routes/web.php',
+            'routes/api' => 'routes/api.php',
+            'routes/channels' => 'routes/channels.php',
             'composer' => 'composer.json'
         ],
         'replacements' => [
-            'routes' => ['LOWER_NAME', 'STUDLY_NAME', 'MODULE_NAMESPACE'],
+            'routes/web' => ['PLURAL_LOWER_NAME', 'STUDLY_NAME'],
+            'routes/api' => ['PLURAL_LOWER_NAME', 'STUDLY_NAME'],
+            'routes/channels' => ['PLURAL_LOWER_NAME', 'STUDLY_NAME'],
             'json' => ['LOWER_NAME', 'STUDLY_NAME', 'MODULE_NAMESPACE'],
             'scaffold/config' => ['STUDLY_NAME'],
             'composer' => [

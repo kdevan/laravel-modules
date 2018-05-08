@@ -433,6 +433,16 @@ class ModuleGenerator extends Generator
     }
 
     /**
+     * Get the module name in plural lower case.
+     *
+     * @return string
+     */
+    protected function getPluralLowerNameReplacement()
+    {
+        return Str::plural(strtolower($this->getName()));
+    }
+
+    /**
      * Get the module name in lower case.
      *
      * @return string
