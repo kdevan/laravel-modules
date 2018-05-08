@@ -70,48 +70,14 @@ class RouteProviderMakeCommand extends GeneratorCommand
 
         $channel->render();
 
-        return (new Stub('/route-provider.stub', [
+        $provider = new Stub('/route-provider.stub', [
             'STUDLY_NAME'         => $this->getClassNamespace($module),
             'API_VERSION'       => $this->laravel['modules']->config('api.version'),
-            'CLASS'             => $this->getFileName(),
             'MODULE_NAMESPACE' => $this->laravel['modules']->config('namespace'),
-            'MODULE'           => $this->getModuleName(),
-            'ROUTES_PATH'   => $this->getRoutesPath(),
-        ]))->render();
-    }
+        ]);
 
-    /**
-     * @return string
-     */
-    private function getFileName()
-    {
-        return 'RouteServiceProvider';
-    }
+        $provider->render();
 
-    /**
-     * Get the destination file path.
-     *
-     * @return string
-     */
-    protected function getDestinationFilePath()
-    {
-        $path = $this->laravel['modules']->getModulePath($this->getModuleName());
-
-        $generatorPath = GenerateConfigReader::read('provider');
-
-        return $path . $generatorPath->getPath() . '/' . $this->getFileName() . '.php';
-    }
-
-    /**
-     * @return mixed
-     */
-    protected function getRoutesPath()
-    {
-        return '/' . $this->laravel['config']->get('stubs.files.routes', 'routes/');
-    }
-
-    public function getDefaultNamespace() : string
-    {
-        return $this->laravel['modules']->config('paths.generator.provider.path', 'Providers');
+        return compact('web', 'api', 'channel', 'provider');
     }
 }
