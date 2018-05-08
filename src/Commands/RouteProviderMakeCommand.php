@@ -63,7 +63,7 @@ class RouteProviderMakeCommand extends GeneratorCommand
 
         $api->render();
 
-        $channel = new Stub('/routes/channel.stub', [
+        $channel = new Stub('/routes/channels.stub', [
             'STUDLY_NAME'         => $this->getClassNamespace($module),
             'PLURAL_LOWER_NAME'       => Str::plural(strtolower($this->getClassNamespace($module))),
         ]);
