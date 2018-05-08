@@ -1,13 +1,7 @@
 {
-  "name": "nwidart/laravel-modules",
+  "name": "kdevan/laravel-modules",
   "description": "Laravel Module management",
-  "keywords": [
-    "modules",
-    "laravel",
-    "nwidart",
-    "module",
-    "rad"
-  ],
+  "version": "dev-master",
   "license": "MIT",
   "authors": [
     {
@@ -31,7 +25,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Nwidart\\Modules\\": "src"
+      "kdevan\\Modules\\": "src"
     },
     "files": [
       "src/helpers.php"
@@ -39,21 +33,18 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Nwidart\\Modules\\Tests\\": "tests",
+      "Kdevan\\Modules\\Tests\\": "tests",
       "Modules\\Recipe\\": "tests/stubs/valid/Recipe"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Nwidart\\Modules\\LaravelModulesServiceProvider"
+        "Kdevan\\Modules\\LaravelModulesServiceProvider"
       ],
       "aliases": {
-        "Module": "Nwidart\\Modules\\Facades\\Module"
+        "Module": "Kdevan\\Modules\\Facades\\Module"
       }
-    },
-    "branch-alias": {
-      "dev-master": "3.0-dev"
     }
   },
   "minimum-stability": "dev",
