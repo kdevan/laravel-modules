@@ -30,12 +30,14 @@ return [
             'routes/web' => 'routes/web.php',
             'routes/api' => 'routes/api.php',
             'routes/channels' => 'routes/channels.php',
+            'route-provider' => 'Providers/RouteServiceProvider.php',
             'composer' => 'composer.json'
         ],
         'replacements' => [
             'routes/web' => ['PLURAL_LOWER_NAME', 'STUDLY_NAME'],
             'routes/api' => ['PLURAL_LOWER_NAME', 'STUDLY_NAME'],
             'routes/channels' => ['PLURAL_LOWER_NAME', 'STUDLY_NAME'],
+            'route-provider' => ['STUDLY_NAME', 'MODULE_NAMESPACE'],
             'json' => ['LOWER_NAME', 'STUDLY_NAME', 'MODULE_NAMESPACE'],
             'scaffold/config' => ['STUDLY_NAME'],
             'composer' => [
