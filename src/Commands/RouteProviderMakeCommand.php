@@ -50,8 +50,7 @@ class RouteProviderMakeCommand extends GeneratorCommand
         $module = $this->laravel['modules']->findOrFail($this->getModuleName());
 
         return (new Stub('/route-provider.stub', [
-            'STUDLY_NAME'         => $this->getClassNamespace($module),
-            'API_VERSION'       => $this->laravel['modules']->config('api.version'),
+            'STUDLY_NAME'         => $module,
             'CLASS'             => $this->getFileName(),
             'MODULE_NAMESPACE' => $this->laravel['modules']->config('namespace'),
             'MODULE'           => $this->getModuleName(),

@@ -17,13 +17,6 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = '$MODULE_NAMESPACE$\$STUDLY_NAME$\Http\Controllers';
 
     /**
-     * This version is applied to the prefix of the route.
-     *
-     * @var string
-     */
-    protected $version = '$API_VERSION$';
-
-    /**
      * Called before routes are registered.
      *
      * Register any model bindings or pattern based filters.
@@ -46,6 +39,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
         $this->mapWebRoutes();
+        $this->mapChannelsRoutes();
     }
 
     /**
@@ -71,20 +65,22 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix($this->getApiPrefix())
-             ->as($this->getApiRouteName())
+        Route::prefix('api/v2')
+             ->as('api.v2.')
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(__DIR__ . '/../routes/api.php');
     }
 
-    protected function getApiRouteName()
+    /**
+     * Define the "channels" routes for the application.
+     *
+     * @return void
+     */
+    protected function mapChannelsRoutes()
     {
-        return 'api.'.$this->version.'.';
-    }
-
-    protected function getApiPrefix()
-    {
-        return 'api/'.$this->version;
+        Route::prefix('channels')
+             ->namespace($this->namespace)
+             ->group(__DIR__ . '/../routes/channels.php');
     }
 }
