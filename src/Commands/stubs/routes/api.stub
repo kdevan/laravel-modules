@@ -11,4 +11,4 @@
 |
 */
 
-Route::apiResource('$PLURAL_LOWER_NAME$', '$STUDLY_NAME$Controller@index');
+Route::apiResource('$PLURAL_LOWER_NAME$', '$STUDLY_NAME$Controller');
