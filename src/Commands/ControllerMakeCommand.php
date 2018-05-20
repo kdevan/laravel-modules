@@ -2,6 +2,7 @@
 
 namespace Nwidart\Modules\Commands;
 
+use Illuminate\Support\Str;
 use Nwidart\Modules\Support\Config\GenerateConfigReader;
 use Nwidart\Modules\Support\Stub;
 use Nwidart\Modules\Traits\ModuleCommandTrait;
@@ -61,7 +62,7 @@ class ControllerMakeCommand extends GeneratorCommand
             'CLASS_NAMESPACE'   => $this->getClassNamespace($module),
             'CLASS'             => $this->getControllerName(),
             'LOWER_NAME'        => $module->getLowerName(),
-            'LOWER_NAME_PLURAL' => str_plural($module->getLowerName()),
+            'LOWER_NAME_PLURAL' => Str::plural($module->getLowerName()),
             'MODULE'            => $this->getModuleName(),
             'NAME'              => $this->getModuleName(),
             'STUDLY_NAME'       => $module->getStudlyName(),
