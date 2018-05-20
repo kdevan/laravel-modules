@@ -2,6 +2,7 @@
 
 namespace $CLASS_NAMESPACE$;
 
+use Modules\$MODULENAME$\Entities\$MODULENAME$;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -14,7 +15,9 @@ class $CLASS$ extends Controller
      */
     public function index()
     {
-        return view('$LOWER_NAME$::index');
+        return view('$LOWER_NAME$::index', [
+            '$LOWER_NAME_PURAL$' => $MODULENAME$::all(),
+        ]);
     }
 
     /**
@@ -33,40 +36,73 @@ class $CLASS$ extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            '$LOWER_NAME$.name' => 'required',
+        ]);
+
+        $$LOWER_NAME$ = new $MODULENAME$;
+        $$LOWER_NAME$->fill($request->input('$LOWER_NAME$'))
+            ->save();
+
+        return redirect()
+            ->route('$LOWER_NAME_PURAL$.index')
+            ->with('message.created', '$MODULENAME$');
     }
 
     /**
      * Show the specified resource.
+     * @param  $MODULENAME$ $$LOWER_NAME$
      * @return Response
      */
-    public function show()
+    public function show($MODULENAME$ $$LOWER_NAME$)
     {
-        return view('$LOWER_NAME$::show');
+        return view('$LOWER_NAME$::show', [
+            '$LOWER_NAME$' => $$LOWER_NAME$,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
+     * @param  $MODULENAME$ $$LOWER_NAME$
      * @return Response
      */
-    public function edit()
+    public function edit($MODULENAME$ $$LOWER_NAME$)
     {
-        return view('$LOWER_NAME$::edit');
+        return view('$LOWER_NAME$::edit', [
+            '$LOWER_NAME$' => $$LOWER_NAME$,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      * @param  Request $request
+     * @param  $MODULENAME$ $$LOWER_NAME$
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $MODULENAME$ $$LOWER_NAME$)
     {
+        $this->validate($request, [
+            '$LOWER_NAME$.name' => 'required',
+        ]);
+
+        $$LOWER_NAME$->fill($request->input('$LOWER_NAME$'))
+            ->save();
+
+        return redirect()
+            ->route('$LOWER_NAME_PURAL$.index')
+            ->with('message.edited', '$MODULENAME$');
     }
 
     /**
      * Remove the specified resource from storage.
+     * @param  $MODULENAME$ $$LOWER_NAME$
      * @return Response
      */
-    public function destroy()
+    public function destroy($MODULENAME$ $$LOWER_NAME$)
     {
+        $$LOWER_NAME$->delete();
+        return redirect()
+            ->route('$LOWER_NAME_PURAL$.index')
+            ->with('message.destroyed', '$MODULENAME$');
     }
 }

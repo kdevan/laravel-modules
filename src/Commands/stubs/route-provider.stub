@@ -3,7 +3,7 @@
 namespace $MODULE_NAMESPACE$\$STUDLY_NAME$\Providers;
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Modules\Share\Providers\RoutingServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -17,71 +17,10 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = '$MODULE_NAMESPACE$\$STUDLY_NAME$\Http\Controllers';
 
     /**
-     * Called before routes are registered.
-     *
-     * Register any model bindings or pattern based filters.
-     *
-     * @return void
+     * @return string
      */
-    public function boot()
+    protected function getRoutePath($file)
     {
-        //
-
-        parent::boot();
-    }
-
-    /**
-     * Define the routes for the application.
-     *
-     * @return void
-     */
-    public function map()
-    {
-        $this->mapApiRoutes();
-        $this->mapWebRoutes();
-        $this->mapChannelsRoutes();
-    }
-
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-    protected function mapWebRoutes()
-    {
-        Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(__DIR__ . '/../routes/web.php');
-    }
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapApiRoutes()
-    {
-        Route::prefix('api/v1')
-             ->as('api.v1.')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(__DIR__ . '/../routes/api.php');
-    }
-
-    /**
-     * Define the "channels" routes for the application.
-     *
-     * @return void
-     */
-    protected function mapChannelsRoutes()
-    {
-        Route::prefix('channels')
-             ->as('channels.')
-             ->namespace($this->namespace)
-             ->group(__DIR__ . '/../routes/channels.php');
+        return __DIR__ . '/../routes/'.$file.'.php';
     }
 }
