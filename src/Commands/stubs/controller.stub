@@ -2,7 +2,7 @@
 
 namespace $CLASS_NAMESPACE$;
 
-use Modules\$MODULENAME$\Entities\$MODULENAME$;
+use Modules\$MODULENAME$\Entities\$MODEL_NAME$;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -16,7 +16,7 @@ class $CLASS$ extends Controller
     public function index()
     {
         return view('$LOWER_NAME$::index', [
-            '$LOWER_NAME_PLURAL$' => $MODULENAME$::all(),
+            '$LOWER_PLURAL_MODEL$' => $MODEL_NAME$::all(),
         ]);
     }
 
@@ -37,72 +37,72 @@ class $CLASS$ extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            '$LOWER_NAME$.name' => 'required',
+            '$LOWER_MODEL_NAME$.name' => 'required',
         ]);
 
-        $$LOWER_NAME$ = new $MODULENAME$;
-        $$LOWER_NAME$->fill($request->input('$LOWER_NAME$'))
+        $$LOWER_MODEL_NAME$ = new $MODEL_NAME$;
+        $$LOWER_MODEL_NAME$->fill($request->input('$LOWER_MODEL_NAME$'))
             ->save();
 
         return redirect()
-            ->route('$LOWER_NAME_PLURAL$.index')
-            ->with('message.created', '$MODULENAME$');
+            ->route('$LOWER_PLURAL_MODEL$.index')
+            ->with('message.created', '$MODEL_NAME$');
     }
 
     /**
      * Show the specified resource.
-     * @param  $MODULENAME$ $$LOWER_NAME$
+     * @param  $MODEL_NAME$ $$LOWER_MODEL_NAME$
      * @return Response
      */
-    public function show($MODULENAME$ $$LOWER_NAME$)
+    public function show($MODEL_NAME$ $$LOWER_MODEL_NAME$)
     {
         return view('$LOWER_NAME$::show', [
-            '$LOWER_NAME$' => $$LOWER_NAME$,
+            '$LOWER_MODEL_NAME$' => $$LOWER_MODEL_NAME$,
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
-     * @param  $MODULENAME$ $$LOWER_NAME$
+     * @param  $MODEL_NAME$ $$LOWER_MODEL_NAME$
      * @return Response
      */
-    public function edit($MODULENAME$ $$LOWER_NAME$)
+    public function edit($MODEL_NAME$ $$LOWER_MODEL_NAME$)
     {
         return view('$LOWER_NAME$::edit', [
-            '$LOWER_NAME$' => $$LOWER_NAME$,
+            '$LOWER_MODEL_NAME$' => $$LOWER_MODEL_NAME$,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      * @param  Request $request
-     * @param  $MODULENAME$ $$LOWER_NAME$
+     * @param  $MODEL_NAME$ $$LOWER_MODEL_NAME$
      * @return Response
      */
-    public function update(Request $request, $MODULENAME$ $$LOWER_NAME$)
+    public function update(Request $request, $MODEL_NAME$ $$LOWER_MODEL_NAME$)
     {
         $this->validate($request, [
-            '$LOWER_NAME$.name' => 'required',
+            '$LOWER_MODEL_NAME$.name' => 'required',
         ]);
 
-        $$LOWER_NAME$->fill($request->input('$LOWER_NAME$'))
+        $$LOWER_MODEL_NAME$->fill($request->input('$LOWER_MODEL_NAME$'))
             ->save();
 
         return redirect()
-            ->route('$LOWER_NAME_PLURAL$.index')
-            ->with('message.edited', '$MODULENAME$');
+            ->route('$LOWER_PLURAL_MODEL$.index')
+            ->with('message.edited', '$MODEL_NAME$');
     }
 
     /**
      * Remove the specified resource from storage.
-     * @param  $MODULENAME$ $$LOWER_NAME$
+     * @param  $MODEL_NAME$ $$LOWER_MODEL_NAME$
      * @return Response
      */
-    public function destroy($MODULENAME$ $$LOWER_NAME$)
+    public function destroy($MODEL_NAME$ $$LOWER_MODEL_NAME$)
     {
-        $$LOWER_NAME$->delete();
+        $$LOWER_MODEL_NAME$->delete();
         return redirect()
-            ->route('$LOWER_NAME_PLURAL$.index')
-            ->with('message.destroyed', '$MODULENAME$');
+            ->route('$LOWER_PLURAL_MODEL$.index')
+            ->with('message.destroyed', '$MODEL_NAME$');
     }
 }

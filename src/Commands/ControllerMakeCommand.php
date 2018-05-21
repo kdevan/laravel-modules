@@ -55,6 +55,16 @@ class ControllerMakeCommand extends GeneratorCommand
     {
         $module = $this->laravel['modules']->findOrFail($this->getModuleName());
 
+        $studly_model = $module->getStudlyName();
+        $lower_model = $module->getLowerName();
+        $lower_plural_model = Str::plural($module->getLowerName());
+
+        if ($this->option('model') === true) {
+            $studly_model = Str::studly($this->option('model'));
+            $lower_model = Str::lower($this->option('model'));
+            $lower_plural_model = Str::plural($this->option('model'));
+        }
+
         return (new Stub($this->getStubName(), [
             'MODULENAME'        => $module->getStudlyName(),
             'CONTROLLERNAME'    => $this->getControllerName(),
@@ -62,11 +72,14 @@ class ControllerMakeCommand extends GeneratorCommand
             'CLASS_NAMESPACE'   => $this->getClassNamespace($module),
             'CLASS'             => $this->getControllerName(),
             'LOWER_NAME'        => $module->getLowerName(),
-            'LOWER_NAME_PLURAL' => Str::plural($module->getLowerName()),
+            'LOWER_PLURAL_NAME' => Str::plural($module->getLowerName()),
             'MODULE'            => $this->getModuleName(),
             'NAME'              => $this->getModuleName(),
             'STUDLY_NAME'       => $module->getStudlyName(),
             'MODULE_NAMESPACE'  => $this->laravel['modules']->config('namespace'),
+            'MODEL_NAME'        => $studly_model,
+            'LOWER_MODEL_NAME'  => $lower_model,
+            'LOWER_PLURAL_MODEL'=> $lower_plural_model,
         ]))->render();
     }
 
@@ -90,6 +103,7 @@ class ControllerMakeCommand extends GeneratorCommand
     {
         return [
             ['plain', 'p', InputOption::VALUE_NONE, 'Generate a plain controller', null],
+            ['model', 'm', InputOption::VALUE_NONE, 'Include a specific model class'],
         ];
     }
 
