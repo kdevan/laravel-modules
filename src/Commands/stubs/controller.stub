@@ -16,7 +16,7 @@ class $CLASS$ extends Controller
     public function index()
     {
         return view('$LOWER_NAME$::index', [
-            '$LOWER_NAME_PURAL$' => $MODULENAME$::all(),
+            '$LOWER_NAME_PLURAL$' => $MODULENAME$::all(),
         ]);
     }
 
@@ -45,7 +45,7 @@ class $CLASS$ extends Controller
             ->save();
 
         return redirect()
-            ->route('$LOWER_NAME_PURAL$.index')
+            ->route('$LOWER_NAME_PLURAL$.index')
             ->with('message.created', '$MODULENAME$');
     }
 
@@ -89,7 +89,7 @@ class $CLASS$ extends Controller
             ->save();
 
         return redirect()
-            ->route('$LOWER_NAME_PURAL$.index')
+            ->route('$LOWER_NAME_PLURAL$.index')
             ->with('message.edited', '$MODULENAME$');
     }
 
@@ -102,7 +102,7 @@ class $CLASS$ extends Controller
     {
         $$LOWER_NAME$->delete();
         return redirect()
-            ->route('$LOWER_NAME_PURAL$.index')
+            ->route('$LOWER_NAME_PLURAL$.index')
             ->with('message.destroyed', '$MODULENAME$');
     }
 }
