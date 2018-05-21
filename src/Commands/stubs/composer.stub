@@ -1,6 +1,8 @@
 {
-    "name": "$VENDOR$/$LOWER_NAME$",
+    "name": "$VENDOR$/$LOWER_NAME$-module",
     "description": "",
+    "type": "laravel-module",
+    "version": "dev-master",
     "authors": [
         {
             "name": "$AUTHOR_NAME$",
@@ -13,7 +15,7 @@
                 "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\Providers\\$STUDLY_NAME$ServiceProvider"
             ],
             "aliases": {
-                
+
             }
         }
     },
@@ -21,5 +23,8 @@
         "psr-4": {
             "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\": ""
         }
+    },
+    "require": {
+        "joshbrw/laravel-module-installer": "^0.1.4"
     }
 }

@@ -57,12 +57,14 @@ class ControllerMakeCommand extends GeneratorCommand
 
         $studly_model = $module->getStudlyName();
         $lower_model = $module->getLowerName();
-        $lower_plural_model = Str::plural($module->getLowerName());
+        $lower_plural_model = Str::plural($lower_model);
+        $model_exists = '';
 
         if ($this->option('model')) {
             $studly_model = Str::studly($this->option('model'));
             $lower_model = Str::lower($this->option('model'));
-            $lower_plural_model = Str::plural($this->option('model'));
+            $lower_plural_model = Str::plural($lower_model);
+            $model_exists = $lower_plural_model.'.';
         }
 
         return (new Stub($this->getStubName(), [
@@ -80,6 +82,7 @@ class ControllerMakeCommand extends GeneratorCommand
             'MODEL_NAME'        => $studly_model,
             'LOWER_MODEL_NAME'  => $lower_model,
             'LOWER_PLURAL_MODEL'=> $lower_plural_model,
+            'MODEL_EXISTS'      => $model_exists,
         ]))->render();
     }
 

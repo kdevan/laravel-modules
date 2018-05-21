@@ -15,7 +15,7 @@ class $CLASS$ extends Controller
      */
     public function index()
     {
-        return view('$LOWER_NAME$::index', [
+        return view('$LOWER_NAME$::$MODEL_EXISTS$index', [
             '$LOWER_PLURAL_MODEL$' => $MODEL_NAME$::all(),
         ]);
     }
@@ -26,7 +26,7 @@ class $CLASS$ extends Controller
      */
     public function create()
     {
-        return view('$LOWER_NAME$::create');
+        return view('$LOWER_NAME$::$MODEL_EXISTS$create');
     }
 
     /**
@@ -56,7 +56,7 @@ class $CLASS$ extends Controller
      */
     public function show($MODEL_NAME$ $$LOWER_MODEL_NAME$)
     {
-        return view('$LOWER_NAME$::show', [
+        return view('$LOWER_NAME$::$MODEL_EXISTS$show', [
             '$LOWER_MODEL_NAME$' => $$LOWER_MODEL_NAME$,
         ]);
     }
@@ -68,7 +68,7 @@ class $CLASS$ extends Controller
      */
     public function edit($MODEL_NAME$ $$LOWER_MODEL_NAME$)
     {
-        return view('$LOWER_NAME$::edit', [
+        return view('$LOWER_NAME$::$MODEL_EXISTS$edit', [
             '$LOWER_MODEL_NAME$' => $$LOWER_MODEL_NAME$,
         ]);
     }
