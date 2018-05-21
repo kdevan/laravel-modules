@@ -59,7 +59,7 @@ class ControllerMakeCommand extends GeneratorCommand
         $lower_model = $module->getLowerName();
         $lower_plural_model = Str::plural($module->getLowerName());
 
-        if ($this->option('model') === true) {
+        if ($this->option('model')) {
             $studly_model = Str::studly($this->option('model'));
             $lower_model = Str::lower($this->option('model'));
             $lower_plural_model = Str::plural($this->option('model'));
