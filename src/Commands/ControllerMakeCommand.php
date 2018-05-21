@@ -103,7 +103,7 @@ class ControllerMakeCommand extends GeneratorCommand
     {
         return [
             ['plain', 'p', InputOption::VALUE_NONE, 'Generate a plain controller', null],
-            ['model', 'm', InputOption::VALUE_NONE, 'Include a specific model class'],
+            ['model', 'm', InputOption::VALUE_OPTIONAL, 'Include a specific model class'],
         ];
     }
 
