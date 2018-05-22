@@ -2,7 +2,7 @@
 
 namespace $NAMESPACE$;
 
-use Illuminate\Database\Eloquent\Model;
+use Modules\Share\Entities\ShareModel as Model;
 
 class $CLASS$ extends Model
 {
@@ -12,6 +12,8 @@ class $CLASS$ extends Model
      * @var array
      */
     protected $fillable = $FILLABLE$;
+
+    protected $dates = ['deleted_at'];
 
     protected $casts = [
         'id' => 'string',

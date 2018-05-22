@@ -15,6 +15,7 @@ class $CLASS$ extends Migration
         Schema::create('$TABLE$', function (Blueprint $table) {
             $table->uuid('id')->primary();
 $FIELDS$
+            $table->softDeletes();
             $table->timestamps();
         });
         DB::statement('ALTER TABLE $TABLE$ ALTER COLUMN id SET DEFAULT uuid_generate_v4();');
