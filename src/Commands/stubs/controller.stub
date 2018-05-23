@@ -10,13 +10,28 @@ use Illuminate\Routing\Controller;
 class $CLASS$ extends Controller
 {
     /**
+     * The $LOWER_PLURAL_MODEL$ repository.
+     */
+    protected $$LOWER_PLURAL_MODEL$;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct($MODEL_NAME$ $$LOWER_MODEL_NAME$)
+    {
+        $this->$LOWER_PLURAL_MODEL$ = $$LOWER_MODEL_NAME$;
+    }
+
+    /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
         return view('$LOWER_NAME$::$MODEL_EXISTS$index', [
-            '$LOWER_PLURAL_MODEL$' => $MODEL_NAME$::all(),
+            '$LOWER_PLURAL_MODEL$' => $this->$LOWER_PLURAL_MODEL$->all(),
         ]);
     }
 
@@ -45,7 +60,7 @@ class $CLASS$ extends Controller
             ->save();
 
         return redirect()
-            ->route('$LOWER_PLURAL_MODEL$.index')
+            ->to(project_route('$LOWER_PLURAL_MODEL$.show', $$LOWER_MODEL_NAME$))
             ->with('message.created', '$MODEL_NAME$');
     }
 
@@ -89,7 +104,7 @@ class $CLASS$ extends Controller
             ->save();
 
         return redirect()
-            ->route('$LOWER_PLURAL_MODEL$.index')
+            ->to(project_route('$LOWER_PLURAL_MODEL$.show', $$LOWER_MODEL_NAME$))
             ->with('message.edited', '$MODEL_NAME$');
     }
 
@@ -102,7 +117,7 @@ class $CLASS$ extends Controller
     {
         $$LOWER_MODEL_NAME$->delete();
         return redirect()
-            ->route('$LOWER_PLURAL_MODEL$.index')
+            ->to(project_route('$LOWER_PLURAL_MODEL$.index'))
             ->with('message.destroyed', '$MODEL_NAME$');
     }
 }
