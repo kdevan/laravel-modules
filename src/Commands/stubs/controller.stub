@@ -10,9 +10,9 @@ use Illuminate\Routing\Controller;
 class $CLASS$ extends Controller
 {
     /**
-     * The $LOWER_PLURAL_MODEL$ repository.
+     * The $LOWER_MODEL_NAME$ repository.
      */
-    protected $$LOWER_PLURAL_MODEL$;
+    protected $$LOWER_MODEL_NAME$;
 
     /**
      * Instantiate a new controller instance.
@@ -21,7 +21,7 @@ class $CLASS$ extends Controller
      */
     public function __construct($MODEL_NAME$ $$LOWER_MODEL_NAME$)
     {
-        $this->$LOWER_PLURAL_MODEL$ = $$LOWER_MODEL_NAME$;
+        $this->$LOWER_MODEL_NAME$ = $$LOWER_MODEL_NAME$;
     }
 
     /**
@@ -31,7 +31,7 @@ class $CLASS$ extends Controller
     public function index()
     {
         return view('$LOWER_NAME$::$MODEL_EXISTS$index', [
-            '$LOWER_PLURAL_MODEL$' => $this->$LOWER_PLURAL_MODEL$->all(),
+            '$LOWER_PLURAL_MODEL$' => $this->$LOWER_MODEL_NAME$->all(),
         ]);
     }
 
@@ -55,12 +55,11 @@ class $CLASS$ extends Controller
             '$LOWER_MODEL_NAME$.name' => 'required',
         ]);
 
-        $$LOWER_MODEL_NAME$ = new $MODEL_NAME$;
-        $$LOWER_MODEL_NAME$->fill($request->input('$LOWER_MODEL_NAME$'))
+        $this->$LOWER_MODEL_NAME$->fill($request->input('$LOWER_MODEL_NAME$'))
             ->save();
 
         return redirect()
-            ->to(project_route('$LOWER_PLURAL_MODEL$.show', $$LOWER_MODEL_NAME$))
+            ->to(project_route('$LOWER_PLURAL_MODEL$.show', $this->$LOWER_MODEL_NAME$))
             ->with('message.created', '$MODEL_NAME$');
     }
 
